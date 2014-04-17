@@ -27,6 +27,66 @@ namespace Recommender
     /// </summary>
     sealed partial class App : Application
     {
+        public enum NavaigationPages : int { MainPage, SearchPage, TopicSummaryPage, TopicDetailPage, ItemPage, SettingFlyoutAboutPage, SettingFlyoutPrivacyPolicyPage };
+        public static class NavigationRoadmap
+        {
+            private static string _from = "";
+            private static string _to = "";
+
+            public static string GetFrom()
+            {
+                return _from;
+            }
+
+            public static string GetTo()
+            {
+                return _to;
+            }
+
+            public static void SetFrom(int from)
+            {
+                _from = GetNavigationPage(from);
+            }
+
+            public static void SetTo(int to)
+            {
+                _to = GetNavigationPage(to);
+            }
+
+            private static string GetNavigationPage(int page)
+            {
+                string pageName = "MainPage";
+                switch (page)
+                {
+                    case 0:
+                        pageName = "MainPage";
+                        break;
+                    case 1:
+                        pageName = "SearchPage";
+                        break;
+                    case 2:
+                        pageName = "TopicSummaryPage";
+                        break;
+                    case 3:
+                        pageName = "TopicDetailPage";
+                        break;
+                    case 4:
+                        pageName = "ItemPage";
+                        break;
+                    case 5:
+                        pageName = "SettingFlyoutAboutPage";
+                        break;
+                    case 6:
+                        pageName = "SettingFlyoutPrivacyPolicyPage";
+                        break;
+                    default:
+                        pageName = "MainPage";
+                        break;
+                }
+                return pageName;
+            }
+        }
+
         public static string gPhysicalAddress = "";
         /// <summary>
         /// Initializes the singleton Application object.  This is the first line of authored code

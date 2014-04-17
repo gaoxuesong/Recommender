@@ -159,8 +159,8 @@ namespace Recommender
             else
             {
                 string key = System.Net.WebUtility.UrlEncode(queryText);
-                string requestUrl = "http://replatform.cloudapp.net:8000/getsearchrec?v=" + key;
-                //string requstUrl = "http://192.168.1.215:9999/getsearchrec?v=" + key;
+                string requestUrl = "http://replatform.cloudapp.net:8000/getsearchrec?v={0}&uuid={1}&from={2}&to={3}";
+                requestUrl = String.Format(requestUrl, key, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                 // The deferral object is used to supply suggestions asynchronously for example when fetching suggestions from a web service.
                 var request = e.Request;
@@ -283,11 +283,13 @@ namespace Recommender
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetTo((int)App.NavaigationPages.SearchPage);
             navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetFrom((int)App.NavaigationPages.SearchPage);
             navigationHelper.OnNavigatedFrom(e);
         }
 

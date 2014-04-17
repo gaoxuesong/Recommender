@@ -148,9 +148,10 @@ namespace Recommender.DataModel
                     return;
                 }
 
-                string requestUrl = "http://replatform.cloudapp.net:8000/getmedia/?id={0}"; //192.168.1.215:9999
+                string requestUrl = "http://replatform.cloudapp.net:8000/getmedia/?id={0}&uuid={1}&from={2}&to={3}"; //192.168.1.215:9999
                 //string requestUrl = "http://192.168.1.215:9999/getmedia/?id={0}";
-                requestUrl = String.Format(requestUrl, uniqueId);
+
+                requestUrl = String.Format(requestUrl, uniqueId, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                 HttpBaseProtocolFilter filter = new HttpBaseProtocolFilter();
                 filter.AutomaticDecompression = true;
@@ -246,9 +247,9 @@ namespace Recommender.DataModel
                     return;
                 }
 
-                string requestUrl = "http://replatform.cloudapp.net:8000/getrelated/?id={0}";
+                string requestUrl = "http://replatform.cloudapp.net:8000/getrelated/?id={0}&uuid={1}&from={2}&to={3}";
                 //string requestUrl = "http://192.168.1.215:9999/getrelated/?id={0}";
-                requestUrl = String.Format(requestUrl, group.UniqueId);
+                requestUrl = String.Format(requestUrl, group.UniqueId, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                 HttpBaseProtocolFilter filter = new HttpBaseProtocolFilter();
                 filter.AutomaticDecompression = true;

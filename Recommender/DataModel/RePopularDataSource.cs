@@ -96,9 +96,8 @@ namespace Recommender.DataModel
         {
             try
             {
-                //string requestUrl = "http://replatform.cloudapp.net:8000/getguess/?uuid={0}&page={1}";
-                string requestUrl = "http://replatform.cloudapp.net:8000/getpopular";
-                string userid = App.gPhysicalAddress;
+                string requestUrl = "http://replatform.cloudapp.net:8000/getpopular/?uuid={0}&from={1}&to={2}";
+                requestUrl = String.Format(requestUrl, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                 HttpBaseProtocolFilter filter = new HttpBaseProtocolFilter();
                 filter.AutomaticDecompression = true;

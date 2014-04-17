@@ -352,6 +352,7 @@
     <MainPackageIdentityName>24512Xuesong.8806072FB76E</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>聚难看</ReservedName>
+      <ReservedName>聚好看</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
@@ -370,6 +371,7 @@
     <MainPackageIdentityName>24512Xuesong.519132E6096E</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.3897150F8AC33</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.516632B5A549C</MainPackageIdentityName>
+    <MainPackageIdentityName>24512Xuesong.5346652BF5142</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.50918307684B0</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.37878FCCC713F</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.36164AE46C612</MainPackageIdentityName>
@@ -383,9 +385,7 @@
     <MainPackageIdentityName>24512Xuesong.146822A7AB9D7</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.6174535FC1CBF</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.9458B647E2B0</MainPackageIdentityName>
-    <MainPackageIdentityName>24512Xuesong.6307252993475</MainPackageIdentityName>
-    <MainPackageIdentityName>24512Xuesong.51510F70E22AD</MainPackageIdentityName>
-    <MainPackageIdentityName>24512Xuesong.326288DDE75AF</MainPackageIdentityName>
+    <MainPackageIdentityName>24512Xuesong.4465D490E35F</MainPackageIdentityName>
     <MainPackageIdentityName>24512Xuesong.62365681EE934</MainPackageIdentityName>
   </AccountPackageIdentityNames>
   <PackageInfoList LandingUrl="https://appdev.microsoft.com:443/StorePortals/Developer/Catalog/ReleaseAnchor/0abdfe15-9792-49ef-8f48-9ab12c1dc394">
@@ -393,17 +393,17 @@
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.0.0.5</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.0.0.8</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.0.0.5</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.0.0.8</PackageMaxArchitectureVersion>
       </PackageInfo>
       <PackageInfo>
         <OsMinVersion>6.3.0.0</OsMinVersion>
         <PackageArchitecture>Neutral</PackageArchitecture>
-        <PackageMaxArchitectureVersion>1.0.0.5</PackageMaxArchitectureVersion>
+        <PackageMaxArchitectureVersion>1.0.0.8</PackageMaxArchitectureVersion>
       </PackageInfo>
     </BundleInfo>
   </PackageInfoList>

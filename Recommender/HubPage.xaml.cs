@@ -104,6 +104,33 @@ namespace Recommender
             this.Frame.Navigate(typeof(ItemPage), itemId);
         }
 
+        private async void ReGuess_OnTapped(object sender, TappedRoutedEventArgs e)
+        {
+            ((CascadingImageControl)sender).Cascade();
+            var reDataGroup = await ReDataSource.GetGroupAsync("Guess");
+            if (reDataGroup == null)
+            {
+                InternetFailureAlarm();
+            }
+            else
+            {
+                this.DefaultViewModel["GuessItems"] = reDataGroup;
+            }
+        }
+
+        private async void ReGuessBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var reDataGroup = await ReDataSource.GetGroupAsync("Guess");
+            if (reDataGroup == null)
+            {
+                InternetFailureAlarm();
+            }
+            else
+            {
+                this.DefaultViewModel["GuessItems"] = reDataGroup;
+            }
+        }
+
         void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SearchPage));
@@ -127,6 +154,11 @@ namespace Recommender
                 SettingsFlyoutPrivacyPolicy sfpp = new SettingsFlyoutPrivacyPolicy();
                 sfpp.ShowIndependent();
             }
+        }
+
+        private void TopicsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(TopicsPage));
         }
 
         private async void InternetFailureAlarm()
@@ -153,7 +185,6 @@ namespace Recommender
             //
         }
 
-
         #region NavigationHelper registration
 
         /// The methods provided in this section are simply used to allow
@@ -167,28 +198,16 @@ namespace Recommender
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetTo((int)App.NavaigationPages.MainPage);
             navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetFrom((int)App.NavaigationPages.MainPage);
             navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
-
-        private async void ReGuess_OnTapped(object sender, TappedRoutedEventArgs e)
-        {
-            ((CascadingImageControl)sender).Cascade();
-            var reDataGroup = await ReDataSource.GetGroupAsync("Guess");
-            if (reDataGroup == null)
-            {
-                InternetFailureAlarm();
-            }
-            else
-            {
-                this.DefaultViewModel["GuessItems"] = reDataGroup;
-            }            
-        }
     }
 }

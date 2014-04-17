@@ -117,8 +117,8 @@
     <Compile Include="Common\BooleanToVisibilityConverter.cs" />
     <Compile Include="Common\Helpers.cs" />
     <Compile Include="Common\HttpJsonContent.cs" />
+    <Compile Include="Common\IndividualBtn.cs" />
     <Compile Include="Common\PlugInFilter.cs" />
-    <Compile Include="Common\ShareButton.cs" />
     <Compile Include="Common\SlowInputStream.cs" />
     <Compile Include="DataModel\ReDataGroup.cs" />
     <Compile Include="DataModel\ReDataItem.cs" />
@@ -126,6 +126,7 @@
     <Compile Include="DataModel\ReDetailDataSource.cs" />
     <Compile Include="DataModel\RePopularDataSource.cs" />
     <Compile Include="DataModel\ReSearchDataSource.cs" />
+    <Compile Include="DataModel\ReTopicsDataSource.cs" />
     <Compile Include="DataModel\ReUserActionDataSource.cs" />
     <Compile Include="HubPage.xaml.cs">
       <DependentUpon>HubPage.xaml</DependentUpon>
@@ -151,6 +152,12 @@
     <Compile Include="SettingsFlyoutPrivacyPolicy.xaml.cs">
       <DependentUpon>SettingsFlyoutPrivacyPolicy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TopicsPage.xaml.cs">
+      <DependentUpon>TopicsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TopicSplitPage.xaml.cs">
+      <DependentUpon>TopicSplitPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VariableSizedGridView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +169,8 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Recommender_StoreKey.pfx" />
+    <None Include="Recommender_TemporaryKey.pfx" />
     <PRIResource Include="Strings\zh-CN\Resources.resw" />
     <Content Include="Assets\image\414X180.png" />
     <Content Include="Assets\image\414X468.png" />
@@ -171,13 +180,18 @@
     <Content Include="Assets\image\Award-01.png" />
     <Content Include="Assets\image\background-black_1920X1080PX.jpg" />
     <Content Include="Assets\image\bg-black-1920X1200PX.jpg" />
+    <Content Include="Assets\image\Category-336PX.png" />
+    <Content Include="Assets\image\Category-691X336PX.png" />
+    <Content Include="Assets\image\eva-re-300X145PX.png" />
     <Content Include="Assets\image\eva-re-691X336PX.png" />
     <Content Include="Assets\image\eva-re.png" />
     <Content Include="Assets\image\Gear.png" />
+    <Content Include="Assets\image\KongfuPanda2.png" />
     <Content Include="Assets\image\Media-Play-02.png" />
     <Content Include="Assets\image\Military-Medal.png" />
     <Content Include="Assets\image\Movie_300PX.png" />
     <Content Include="Assets\image\Search-Find_336PX.png" />
+    <Content Include="Assets\image\signet.png" />
     <Content Include="Assets\image\View-Reset-336PX.png" />
     <Content Include="Assets\image\walle-eva.jpg" />
     <Content Include="Assets\image\walle-re.jpg" />
@@ -200,12 +214,6 @@
     <Content Include="Assets\Logo.scale-140.png" />
     <Content Include="Assets\Logo.scale-180.png" />
     <Content Include="Assets\Logo.scale-80.png" />
-    <Content Include="Assets\Screenshots\Screenshot %2810%29.png" />
-    <Content Include="Assets\Screenshots\Screenshot %2811%29.png" />
-    <Content Include="Assets\Screenshots\Screenshot %2812%29.png" />
-    <Content Include="Assets\Screenshots\Screenshot %287%29.png" />
-    <Content Include="Assets\Screenshots\Screenshot %288%29.png" />
-    <Content Include="Assets\Screenshots\Screenshot %289%29.png" />
     <Content Include="Assets\StoreLogo.scale-140.png" />
     <Content Include="Assets\StoreLogo.scale-180.png" />
     <Content Include="Assets\Tiles\Windmill-03-500PX-Square.png" />
@@ -276,6 +284,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SettingsFlyoutPrivacyPolicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TopicsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TopicSplitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

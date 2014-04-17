@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -16,19 +16,26 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-
-// The Section Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234229
+// The Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234233
 
 namespace Recommender
 {
     /// <summary>
-    /// A page that displays an overview of a single group, including a preview of the items
-    /// within the group.
+    /// A page that displays a collection of item previews.  In the Split Application this page
+    /// is used to display and select one of the available groups.
     /// </summary>
-    public sealed partial class SectionPage : Page
+    public sealed partial class TopicsPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
+        /// <summary>
+        /// This can be changed to a strongly typed view model.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
 
         /// <summary>
         /// NavigationHelper is used on each page to aid in navigation and 
@@ -39,16 +46,7 @@ namespace Recommender
             get { return this.navigationHelper; }
         }
 
-        /// <summary>
-        /// This can be changed to a strongly typed view model.
-        /// </summary>
-        public ObservableDictionary DefaultViewModel
-        {
-            get { return this.defaultViewModel; }
-        }
-
-
-        public SectionPage()
+        public TopicsPage()
         {
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
@@ -68,23 +66,29 @@ namespace Recommender
         /// session.  The state will be null the first time a page is visited.</param>
         private async void navigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            // TODO: Create an appropriate data model for your problem domain to replace the sample data
-            var group = await ReDataSource.GetGroupAsync((String)e.NavigationParameter);
-            this.DefaultViewModel["Group"] = group;
-            this.DefaultViewModel["Items"] = group.Items;
+            var reDataGroup = await ReTopicsDataSource.GetGroupsAsync();
+            if (reDataGroup == null)
+            {
+                InternetFailureAlarm();
+            }
+            else
+            {
+                this.DefaultViewModel["Items"] = reDataGroup;
+            }
         }
 
         /// <summary>
         /// Invoked when an item is clicked.
         /// </summary>
-        /// <param name="sender">The GridView displaying the item clicked.</param>
+        /// <param name="sender">The GridView (or ListView when the application is snapped)
+        /// displaying the item clicked.</param>
         /// <param name="e">Event data that describes the item clicked.</param>
         void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
             // Navigate to the appropriate destination page, configuring the new page
             // by passing required information as a navigation parameter
-            var itemId = ((ReDataItem)e.ClickedItem).UniqueId;
-            this.Frame.Navigate(typeof(ItemPage), itemId);
+            var groupId = ((ReDataGroup)e.ClickedItem).UniqueId;
+            this.Frame.Navigate(typeof(TopicSplitPage), groupId);
         }
 
         #region NavigationHelper registration
@@ -100,14 +104,40 @@ namespace Recommender
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetTo((int)App.NavaigationPages.TopicSummaryPage);
             navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetFrom((int)App.NavaigationPages.TopicSummaryPage);
             navigationHelper.OnNavigatedFrom(e);
         }
 
         #endregion
+
+        private async void InternetFailureAlarm()
+        {
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+            string connectionFailureAlarm = loader.GetString("ConnectionFailureAlarm");
+            string confirmStr = loader.GetString("Confirm");
+
+            // Create the message dialog and set its content
+            var messageDialog = new MessageDialog(connectionFailureAlarm);
+
+            // Add commands and set their callbacks; both buttons use the same callback function instead of inline event handlers
+            messageDialog.Commands.Add(new UICommand(confirmStr, new UICommandInvokedHandler(this.CommandInvokedHandler)));
+
+            // Set the command that will be invoked by default
+            messageDialog.DefaultCommandIndex = 0;
+
+            // Show the message dialog
+            await messageDialog.ShowAsync();
+        }
+
+        private void CommandInvokedHandler(IUICommand command)
+        {
+            //
+        }
     }
 }

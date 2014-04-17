@@ -14,6 +14,15 @@ namespace Recommender.DataModel
             this.IndexInGroup = indexInGroup;
         }
 
+        public ReDataItem(int indexInGroup, string uniqueId, string title, string imagePath, string description)
+        {
+            this.IndexInGroup = indexInGroup;
+            this.UniqueId = uniqueId;
+            this.Title = title;
+            this.ImagePath = imagePath;
+            this.Description = description;
+        }
+
         public ReDataItem(int indexInGroup, string uniqueId, string title, string actor, string director, string imagePath, string description, string playurl)
         {
             this.IndexInGroup = indexInGroup;
@@ -39,6 +48,20 @@ namespace Recommender.DataModel
             this.Score = score;
         }
 
+        public ReDataItem(int indexInGroup, string uniqueId, string title, string actor, string director, string imagePath, string description, string playurl, string score, string year)
+        {
+            this.IndexInGroup = indexInGroup;
+            this.UniqueId = uniqueId;
+            this.Title = title;
+            this.Actor = actor;
+            this.Director = director;
+            this.ImagePath = imagePath;
+            this.Description = description;
+            this.PlayUrl = playurl;
+            this.Score = score;
+            this.Year = year;
+        }
+
         public int IndexInGroup { get; private set; }
         public string UniqueId { get; private set; }
         public string Title { get; private set; }
@@ -48,6 +71,7 @@ namespace Recommender.DataModel
         public string ImagePath { get; private set; }
         public string PlayUrl { get; private set; }
         public string Score { get; private set; }
+        public string Year { get; private set; }
         public override string ToString()
         {
             return this.Title;

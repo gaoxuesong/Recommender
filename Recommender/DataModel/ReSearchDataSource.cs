@@ -97,8 +97,8 @@ namespace Recommender.DataModel
             try
             {
                 key = System.Net.WebUtility.UrlEncode(key);
-                string requstUrl = "http://replatform.cloudapp.net:8000/getsearch?v=" + key;
-                //string requstUrl = "http://192.168.1.215:9999/getsearch?v=" + key;
+                string requstUrl = "http://replatform.cloudapp.net:8000/getsearch?v={0}&uuid={1}&from={2}&to={3}";
+                requstUrl = String.Format(requstUrl, key, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                 HttpBaseProtocolFilter filter = new HttpBaseProtocolFilter();
                 filter.AutomaticDecompression = true;

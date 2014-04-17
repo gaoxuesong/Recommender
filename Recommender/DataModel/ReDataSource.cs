@@ -1,5 +1,5 @@
 ﻿using Recommender.Common;
-using Recommender.DataModel;
+//using Recommender.DataModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,7 +13,7 @@ using Windows.Storage;
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
 
-namespace Recommender.Data
+namespace Recommender.DataModel
 {
     public sealed class ReDataSource
     {
@@ -96,13 +96,14 @@ namespace Recommender.Data
         {
             try
             {
-                string requestUrl = "http://replatform.cloudapp.net:8000/getguess/?uuid={0}&page={1}";
+                string requestUrl = "http://replatform.cloudapp.net:8000/getguess/?uuid={0}&page={1}&from={2}&to={3}&r={4}";
                 //string requestUrl = "http://192.168.1.215:9999/getguess/?uuid={0}&page={1}";
                 string userid = App.gPhysicalAddress;
 
                 Random random = new Random();
                 int page = random.Next(iMinInclusivePageValue, iMaxExclusivePageValue);
-                requestUrl = String.Format(requestUrl, userid, page);
+                int r = random.Next();
+                requestUrl = String.Format(requestUrl, userid, page, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo(), r);
 
                 HttpBaseProtocolFilter filter = new HttpBaseProtocolFilter();
                 filter.AutomaticDecompression = true;

@@ -22,6 +22,15 @@ namespace Recommender.DataModel
             this.Items = new ObservableCollection<ReDataItem>();
         }
 
+        public ReDataGroup(string uniqueId, string title, string imagePath, string description)
+        {
+            this.UniqueId = uniqueId;
+            this.Title = title;
+            this.ImagePath = imagePath;
+            this.Description = description;
+            this.Items = new ObservableCollection<ReDataItem>();
+        }
+
         public ReDataGroup(string uniqueId, string title, string actor, string director, string imagePath, string description, string playurl)
         {
             this.UniqueId = uniqueId;

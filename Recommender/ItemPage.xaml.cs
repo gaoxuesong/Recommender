@@ -114,8 +114,8 @@ namespace Recommender
                 // for download resource
                 if (tempPlayUrl.StartsWith(specialUrlStarts, StringComparison.OrdinalIgnoreCase))
                 {
-                    String switchUrl = "http://replatform.cloudapp.net:8000/getplay?id={0}&v={1}";
-                    playUrl = String.Format(switchUrl, gMediaId, tempPlayUrl);                    
+                    String switchUrl = "http://replatform.cloudapp.net:8000/getplay?id={0}&v={1}&uuid={2}&from={3}&to={4}";
+                    playUrl = String.Format(switchUrl, gMediaId, tempPlayUrl, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());                    
 
                     string realUrl = await ReDetailDataSource.GetHLSPlayUrlAsync(playUrl);
                     playUrl = realUrl;                    
@@ -124,8 +124,8 @@ namespace Recommender
                 // in the future maybe play the media in my app
                 else if (tempPlayUrl.EndsWith(specialUrlEnds, StringComparison.OrdinalIgnoreCase)) 
                 {
-                    String switchUrl = "http://replatform.cloudapp.net:8000/getplay?id={0}&v={1}";
-                    playUrl = String.Format(switchUrl, gMediaId, tempPlayUrl);
+                    String switchUrl = "http://replatform.cloudapp.net:8000/getplay?id={0}&v={1}&uuid={2}&from={3}&to={4}";
+                    playUrl = String.Format(switchUrl, gMediaId, tempPlayUrl, App.gPhysicalAddress, App.NavigationRoadmap.GetFrom(), App.NavigationRoadmap.GetTo());
 
                     string realUrl = await ReDetailDataSource.GetHLSPlayUrlAsync(playUrl);
                     playUrl = realUrl;
@@ -199,11 +199,13 @@ namespace Recommender
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetTo((int)App.NavaigationPages.ItemPage);
             navigationHelper.OnNavigatedTo(e);
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.NavigationRoadmap.SetFrom((int)App.NavaigationPages.ItemPage);
             navigationHelper.OnNavigatedFrom(e);
         }
 

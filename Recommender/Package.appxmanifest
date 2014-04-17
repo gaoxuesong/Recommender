@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="24512Xuesong.8806072FB76E" Publisher="CN=02BA8CC8-0414-465D-830B-E70A60D03A6B" Version="1.0.0.6" />
+  <Identity Name="24512Xuesong.8806072FB76E" Publisher="CN=02BA8CC8-0414-465D-830B-E70A60D03A6B" Version="1.0.0.9" />
   <Properties>
     <DisplayName>聚难看</DisplayName>
     <PublisherDisplayName>Xuesong</PublisherDisplayName>

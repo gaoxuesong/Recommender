@@ -80,29 +80,36 @@
                                 <RowDefinition Height="145"/>
                                 <RowDefinition Height="145"/>
                                 <RowDefinition Height="145"/>
+                                <RowDefinition Height="145"/>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <!--<Button Grid.ColumnSpan="3" Width="300" Height="300" Margin="0,0,0,10" Foreground="White" FontSize="30" BorderThickness="0" Click="SearchBtn_Click" ClickMode="Press">
+                            
+                            <!--<controls:CascadingImageControl Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10" Width="300" Height="145"
+                                VerticalAlignment="Center" HorizontalAlignment="Center" ImageSource="Assets/image/eva-re-300X145PX.png" 
+                                Columns="6" Rows="3" ColumnDelay="0:0:0.05" RowDelay="0:0:0.1" TileDuration="0:0:4" Tapped="ReGuess_OnTapped" >
+                            </controls:CascadingImageControl>-->
+
+                            <Button Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,10" Width="300" Height="300" Foreground="White" FontSize="30" BorderThickness="0" Click="ReGuessBtn_Click" ClickMode="Press">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Assets/image/eva-re-691X336PX.png" Stretch="Uniform" />
                                 </Button.Background>
-                            </Button>-->
-                            <controls:CascadingImageControl Grid.ColumnSpan="3" Margin="0,0,0,10" Width="300" Height="145"
-                                VerticalAlignment="Center" HorizontalAlignment="Center" ImageSource="Assets/image/eva-re-691X336PX.png"
-                                Columns="6" Rows="3" ColumnDelay="0:0:0.05" RowDelay="0:0:0.1" TileDuration="0:0:4" Tapped="ReGuess_OnTapped" >
-                            </controls:CascadingImageControl>
-
+                            </Button>
                             <Button Grid.ColumnSpan="3" Grid.Row="1" Width="300" Height="300" Margin="0,0,0,10" Foreground="White" FontSize="30" BorderThickness="0" Click="SearchBtn_Click" ClickMode="Press">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Assets/image/walle-search_691X336.png" Stretch="Uniform" />
                                 </Button.Background>
                             </Button>
-                            <Button Width="145" Height="145" Grid.Row="2" Grid.Column="0" Foreground="White" FontSize="15" BorderThickness="0" ClickMode="Press" Click="AboutBtn_Click">
+                            <Button Grid.Row="2" Grid.ColumnSpan="3" Width="300" Height="300" Margin="0,0,0,10" Foreground="White" FontSize="30" BorderThickness="0" Click="TopicsBtn_Click" ClickMode="Press">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Assets/image/Category-691X336PX.png" Stretch="Uniform" />
+                                </Button.Background>
+                            </Button>
+                            <Button Width="145" Height="145" Grid.Row="3" Grid.Column="0" Margin="0,0,0,10" Foreground="White" FontSize="15" BorderThickness="0" ClickMode="Press" Click="AboutBtn_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Assets/image/Military-Medal.png" Stretch="Uniform" />
                                 </Button.Background>
                             </Button>
-                            <Button Width="145" Height="145" Grid.Row="2" Grid.Column="2"  Foreground="White" FontSize="30" BorderThickness="0" ClickMode="Press" Click="SettingBtn_Click">
+                            <Button Width="145" Height="145" Grid.Row="3" Grid.Column="2" Margin="0,0,0,10" Foreground="White" FontSize="30" BorderThickness="0" ClickMode="Press" Click="SettingBtn_Click">
                                 <Button.Background>
                                     <ImageBrush ImageSource="Assets/image/Gear.png" Stretch="Uniform" />
                                 </Button.Background>
