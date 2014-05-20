@@ -1,4 +1,0 @@
-MainPackage=C:\MyProjects\HisensePlatform\Recommender\Recommender\bin\Release\Recommender_1.0.0.9_Bundle\Recommender_1.0.0.9_AnyCPU.appx
-SymbolPackage=C:\MyProjects\HisensePlatform\Recommender\Recommender\AppPackages\Recommender_1.0.0.9_Test\Recommender_1.0.0.9_AnyCPU.appxsym
-ResourcePack=C:\MyProjects\HisensePlatform\Recommender\Recommender\bin\Release\Recommender_1.0.0.9_Bundle\Recommender_1.0.0.9_scale-140.appx
-ResourcePack=C:\MyProjects\HisensePlatform\Recommender\Recommender\bin\Release\Recommender_1.0.0.9_Bundle\Recommender_1.0.0.9_scale-180.appx

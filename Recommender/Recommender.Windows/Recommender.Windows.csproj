@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2E09B46-0F85-40A0-9323-D9B14E848E68}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Recommender</RootNamespace>
+    <AssemblyName>Recommender.Store</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
+    <PackageCertificateKeyFile>Recommender.Windows_StoreKey.pfx</PackageCertificateKeyFile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>FDA50BE4F376D5DF4701388D5D3EECF6BBA382D2</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_APP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\HttpFilters\Windows\HttpFilters.Windows.vcxproj">
+      <Project>{1cf29db6-e7c0-4cbb-9a41-7e680776d0e2}</Project>
+      <Name>HttpFilters.Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SectionPage.xaml.cs">
+      <DependentUpon>SectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ItemPage.xaml.cs">
+      <DependentUpon>ItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsFlyoutAbout.xaml.cs">
+      <DependentUpon>SettingsFlyoutAbout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsFlyoutPrivacyPolicy.xaml.cs">
+      <DependentUpon>SettingsFlyoutPrivacyPolicy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TopicsPage.xaml.cs">
+      <DependentUpon>TopicsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TopicSplitPage.xaml.cs">
+      <DependentUpon>TopicSplitPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="packages.config" />
+    <None Include="Recommender.Windows_StoreKey.pfx" />
+    <None Include="Recommender.Windows_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\Logo.scale-140.png" />
+    <Content Include="Assets\Logo.scale-180.png" />
+    <Content Include="Assets\Logo.scale-80.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-180.png" />
+    <Content Include="Assets\SmallLogo.targetsize-256.png" />
+    <Content Include="Assets\SmallLogo.targetsize-32.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-140.png" />
+    <Content Include="Assets\Square310x310Logo.scale-180.png" />
+    <Content Include="Assets\Square310x310Logo.scale-80.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-140.png" />
+    <Content Include="Assets\StoreLogo.scale-180.png" />
+    <Content Include="Assets\WideLogo.scale-100.png" />
+    <Content Include="Assets\Windmill-03-500PX-Square.png" />
+    <Content Include="Assets\Windmill-Square_248X.png" />
+    <Content Include="Assets\Windmill-Square_256X.png" />
+    <Content Include="Assets\Windmill-Square_30X.png" />
+    <Content Include="Assets\Windmill-Square_32X.png" />
+    <Content Include="Assets\Windmill-Square_434X.png" />
+    <Content Include="Assets\Windmill-Square_50X.png" />
+    <Content Include="Assets\Windmill-Square_54X.png" />
+    <Content Include="Assets\Windmill-Square_558X.png" />
+    <Content Include="Assets\Windmill-Square_70X.png" />
+    <Content Include="Assets\Windmill-Square_90X.png" />
+    <Content Include="Assets\Windmill-Tile-Square_248PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_310PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_434PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_50PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_50PX.scale-180.png" />
+    <Content Include="Assets\Windmill-Tile-Square_558PX.scale-100.png" />
+    <Content Include="Assets\Windmill-Tile-Square_558PX.scale-140.png" />
+    <Content Include="Assets\Windmill-Tile-Square_558PX.scale-180.png" />
+    <Content Include="Assets\Windmill-Tile-Square_558PX.scale-80.png" />
+    <Content Include="Assets\Windmill-Tile-Square_70PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_70PX.scale-180.png" />
+    <Content Include="Assets\Windmill-Tile-Square_90PX.png" />
+    <Content Include="Assets\Windmill-Tile-Square_90PX.scale-180.png" />
+    <Content Include="Assets\Windmill-Tile_120X120.png" />
+    <Content Include="Assets\Windmill-Tile_150X150.png" />
+    <Content Include="Assets\Windmill-Tile_210X210.png" />
+    <Content Include="Assets\Windmill-Tile_270X270.png" />
+    <Content Include="Assets\Windmill-Transparent_Square_120X.png" />
+    <Content Include="Assets\Windmill-Transparent_Square_150X.png" />
+    <Content Include="Assets\Windmill-Transparent_Square_210X.png" />
+    <Content Include="Assets\Windmill-Transparent_Square_270X.png" />
+    <Content Include="Assets\Windmill-Transparent_Square_310X.png" />
+    <Content Include="Assets\Windmill-WideTile_01.png" />
+    <Content Include="Assets\Windmill-WideTile_02.png" />
+    <Content Include="Assets\Windmill-WideTile_03.png" />
+    <Content Include="Assets\Windmill-WideTile_03_310x150.png" />
+    <Content Include="Assets\Windmill-WideTile_03_558X270.png" />
+    <Content Include="Assets\Windmill-WideTile_logo.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_248X120.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_310X150.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_434X210.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_558X270.scale-100.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_558X270.scale-140.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_558X270.scale-180.png" />
+    <Content Include="Assets\Windmill-WideTile_logo_558X270.scale-80.png" />
+    <None Include="Package.StoreAssociation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="HubPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingsFlyoutAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingsFlyoutPrivacyPolicy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TopicsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TopicSplitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="WinRTXamlToolkit">
+      <HintPath>..\..\packages\WinRTXamlToolkit.1.6.1.3\lib\netcore451\WinRTXamlToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="..\Recommender.Shared\Recommender.Shared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,272 @@
+﻿<Page
+    x:Class="Recommender.HubPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Recommender"
+    xmlns:common="using:Recommender.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    d:DataContext="{Binding Source={d:DesignData Source=../Recommender.Shared/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+    xmlns:data="using:Recommender.Data"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <ImageBrush x:Key="HubBackgroundImageBrush" ImageSource="Assets/background-black_1920X1080PX.jpg"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <ImageBrush x:Key="HubBackgroundImageBrush" ImageSource="{x:Null}"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            
+            <CollectionViewSource x:Name="CategoryItemsViewSource" Source="{Binding CategoryItems}"/>
+            
+            <DataTemplate x:Key="VideoItemTemplate">
+                <Grid Margin="5,10,5,10">
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" >
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                    </Border>
+                    <StackPanel Height="60" Orientation="Vertical" VerticalAlignment="Bottom" Background="#A6000000">
+                        <TextBlock Text="{Binding Title}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" 
+                               Style="{StaticResource TitleTextBlockStyle}" Margin="12,0,0,0" TextWrapping="NoWrap" FontFamily="DengXian" />
+                        <TextBlock Text="{Binding Score}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" 
+                               Style="{StaticResource TitleTextBlockStyle}" Margin="12,12,0,0" FontFamily="DengXian" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="CategoryItemTemplate">
+                <Grid Margin="5,10,5,10">
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" >
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                    </Border>
+                    <StackPanel Height="100" Orientation="Vertical" VerticalAlignment="Bottom" Background="#A6000000">
+                        <TextBlock Text="{Binding Title}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" 
+                               Style="{StaticResource TitleTextBlockStyle}" Margin="12,0,0,0" TextWrapping="NoWrap" FontFamily="DengXian" />
+                        <TextBlock Text="{Binding Description}" Foreground="{ThemeResource ListViewItemOverlaySecondaryForegroundThemeBrush}" Style="{StaticResource BaseTextBlockStyle}" 
+                                   TextWrapping="NoWrap" Margin="15,15,15,10" FontSize="18" FontFamily="DengXian" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <!-- Grid-appropriate item template as seen in section 2 -->
+            <DataTemplate x:Key="Standard200x180TileItemTemplate">
+                <Grid Width="180">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="0,0,0,12" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="173" Width="173" Grid.Row="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="173" Width="173"/>
+                    </Border>
+                    <TextBlock Text="{Binding Title}" Style="{ThemeResource BaseTextBlockStyle}" Typography.Capitals="SmallCaps" Grid.Row="1" Margin="0,0,0,24" IsTextScaleFactorEnabled="False" FontFamily="DengXian" Foreground="#FF009EA1" />
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StandardTripleLineItemTemplate">
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="99" Width="99" Grid.Column="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="99" Width="99"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" FontFamily="DengXian" />
+                        <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                        <TextBlock Text="{Binding Description}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StandardDoubleLineItemTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="99" Width="99" Grid.Column="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="99" Width="99"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                        <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Hub x:Name="Hub" Background="{ThemeResource HubBackgroundImageBrush}" >
+            <Hub.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Assets/Windmill-03-80PX-logo.png" Width="60" Height="60" Stretch="UniformToFill" />
+                    <TextBlock x:Name="pageTitle" x:Uid="AppName" Margin="12,0,0,0"  Style="{StaticResource HeaderTextBlockStyle}" Foreground="White"
+                        VerticalAlignment="Center" IsHitTestVisible="false" TextWrapping="NoWrap" FontFamily="DengXian" />
+                </StackPanel>
+            </Hub.Header>
+
+            <HubSection x:Uid="HubSectionPoster" Header="XiaoYi Poster" Width="Auto" FontFamily="DengXian" Foreground="White"
+                         DataContext="{Binding PosterItems}">
+                <DataTemplate>
+                    <!--<GridView
+                        ItemsSource="{Binding Items}"
+                        AutomationProperties.AutomationId="ItemGridView"
+                        AutomationProperties.Name="Items In Group"
+                        ItemTemplate="{StaticResource Standard200x180TileItemTemplate}"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>-->
+                    <local:PostersVariableSizedGridView
+                        x:Name="posterGridView"
+                        ItemsSource="{Binding Items}"
+                        AutomationProperties.AutomationId="ItemGridView"
+                        AutomationProperties.Name="Items In Group"
+                        ItemTemplate="{StaticResource VideoItemTemplate}"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+
+                        <local:PostersVariableSizedGridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid ItemWidth="150" ItemHeight="200" Orientation="Vertical" MaximumRowsOrColumns="3" RenderTransformOrigin="0.5,0.5" >
+                                    <VariableSizedWrapGrid.Projection>
+                                        <PlaneProjection RotationX="5" RotationZ="5" RotationY="5"/>
+                                    </VariableSizedWrapGrid.Projection>
+                                    <VariableSizedWrapGrid.RenderTransform>
+                                        <CompositeTransform TranslateX="10" TranslateY="10"/>
+                                    </VariableSizedWrapGrid.RenderTransform>
+                                </VariableSizedWrapGrid>
+                            </ItemsPanelTemplate>
+                        </local:PostersVariableSizedGridView.ItemsPanel>
+                    </local:PostersVariableSizedGridView>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection x:Uid="HubSectionRecommender" Header="XiaoYi Recommender" FontFamily="DengXian" Foreground="White"
+                        DataContext="{Binding GuessItems}">
+                <DataTemplate>
+                    <!--<ListView 
+                        AutomationProperties.AutomationId="ItemListViewSection3"
+                        AutomationProperties.Name="Items In Group"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemsSource="{Binding Items}"
+                        ItemTemplate="{StaticResource StandardTripleLineItemTemplate}"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    </ListView>-->
+                    <local:PhoneVariableSizedGridView
+                        AutomationProperties.AutomationId="ItemListViewSection3"
+                        AutomationProperties.Name="Items In Group"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemsSource="{Binding Items}"
+                        ItemTemplate="{StaticResource VideoItemTemplate}"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+
+                        <local:PhoneVariableSizedGridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid ItemWidth="150" ItemHeight="200" Orientation="Horizontal" MaximumRowsOrColumns="2"/>
+                            </ItemsPanelTemplate>
+                        </local:PhoneVariableSizedGridView.ItemsPanel>
+                    </local:PhoneVariableSizedGridView>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection x:Uid="HubSectionSearch" Header="XiaoWa Search" FontFamily="DengXian" Foreground="White">
+                <DataTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical">
+                            <!--<Button Height="145" Width="300" BorderThickness="0" Click="SearchBtn_Click">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Assets/walle-search_691X336.png" Stretch="UniformToFill" />
+                                </Button.Background>
+                            </Button>-->
+                            <common:ImageButton Height="145" Width="300" BorderThickness="0" Click="SearchBtn_Click"
+                                            NormalImage="Assets/walle-search_691X336.png" HoverImage="Assets/Windmill_logo_620X300.png" >
+                            </common:ImageButton>
+                            <!--<Button Height="145" Width="145" BorderThickness="0" Click="SettingBtn_Click" >
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Assets/Gear.png" Stretch="UniformToFill" />
+                                </Button.Background>
+                            </Button>-->
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection x:Uid="HubSectionCategory" Header="XiaoWa Category" FontFamily="DengXian" Foreground="White" >
+                <DataTemplate>
+                    <local:TopicsVaribaleSizedGridView
+                        AutomationProperties.AutomationId="ItemListViewSectionCategory"
+                        AutomationProperties.Name="Items In Group"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemsSource="{Binding Source={StaticResource CategoryItemsViewSource}}"
+                        ItemTemplate="{StaticResource CategoryItemTemplate}"
+                        ItemClick="CategoryItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+
+                        <local:TopicsVaribaleSizedGridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid ItemWidth="150" ItemHeight="200" Orientation="Horizontal" MaximumRowsOrColumns="2"/>
+                            </ItemsPanelTemplate>
+                        </local:TopicsVaribaleSizedGridView.ItemsPanel>
+                    </local:TopicsVaribaleSizedGridView>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection >
+                <HubSection.Background>
+                    <ImageBrush ImageSource="Assets/PosterBackground02.png" Stretch="Fill" />
+                </HubSection.Background>
+                <DataTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+
+                            <!-- header -->
+                            <!--<TextBlock x:Uid="KeyStaff" Style="{StaticResource TitleTextBlockStyle}" Text="算法机器人" Foreground="#FF009EA1" FontFamily="DengXian" />-->
+
+                            <!-- Section 1 body -->
+                            <Image Margin="0,25,0,12" Width="200" Height="200" Source="Assets/walle-re.png" />
+                            <TextBlock x:Uid="RobotXiaowa" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,25" TextWrapping="Wrap" FontFamily="DengXian" Foreground="Black">
+                            </TextBlock>
+
+                            <!-- Section 2 body -->
+                            <Image Margin="0,25,0,12" Width="200" Height="200" Source="Assets/eva-re.png" />
+                            <TextBlock x:Uid="RobotXiaoyi" Style="{StaticResource BodyTextBlockStyle}" Margin="0,0,0,25" TextWrapping="Wrap" FontFamily="DengXian" Foreground="Black" >
+                            </TextBlock>
+
+                            <!-- Section 3 body -->
+                            <Image Margin="0,12,0,12" Width="100" Height="100" Source="Assets/signet.png" />
+                            <TextBlock x:Uid="DeveloperIntroduction" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" Foreground="#009EA1" FontFamily="DengXian" >
+                            </TextBlock>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

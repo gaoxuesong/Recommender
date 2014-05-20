@@ -1,0 +1,31 @@
+﻿<SettingsFlyout
+    x:Uid="SettingPrivacyPolicy"
+    x:Class="Recommender.SettingsFlyoutPrivacyPolicy"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Recommender"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    IconSource="Assets/SmallLogo.png"
+    Title="隐私保护"
+    HeaderForeground="White" 
+    HeaderBackground="#009EA1"
+    d:DesignWidth="346">
+
+    <!-- This StackPanel acts as a root panel for vertical layout of the content sections -->
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+
+        <!-- The StackPanel(s) below define individual content sections -->
+
+        <!-- Content Section 1-->
+        <StackPanel Style="{StaticResource SettingsFlyoutSectionStyle}">
+            <HyperlinkButton x:Uid="PrivacyPolicyLink" Padding="0,0,0,0" Content="隐私政策" 
+                             NavigateUri="http://www.cnblogs.com/xuesong/p/3620324.html" Tag="http://www.cnblogs.com/xuesong/p/3620324.html" 
+                             HorizontalAlignment="Left" FontSize="18" FontFamily="DengXian" />
+        </StackPanel>
+
+        <!-- Define more Content Sections below as necessary -->
+
+    </StackPanel>
+</SettingsFlyout>

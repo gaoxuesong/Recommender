@@ -1,0 +1,173 @@
+﻿<Page
+    x:Class="Recommender.ItemPage"    
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Recommender"
+    xmlns:common="using:Recommender.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    d:DataContext="{Binding Source={d:DesignData Source=../Recommender.Shared/DataModel/SampleData.json, Type=data:SampleDataSource}}"
+    xmlns:data="using:Recommender.Data"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <ImageBrush x:Key="HubBackgroundImageBrush" ImageSource="Assets/background-black_1920X1080PX.jpg"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="HighContrast">
+                    <ImageBrush x:Key="HubBackgroundImageBrush" ImageSource="{x:Null}"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            
+            <CollectionViewSource
+            x:Name="itemsViewSource"
+            Source="{Binding Items}"
+            d:DataContext="{Binding Groups[0].Items[0], Source={d:DesignData Source=../Recommender.Shared/DataModel/SampleData.json, Type=data:SampleDataSource}}"/>
+            
+            <DataTemplate x:Key="VideoItemTemplate">
+                <Grid Margin="5,10,5,10">
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" >
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
+                    </Border>
+                    <StackPanel Height="60" Orientation="Vertical" VerticalAlignment="Bottom" Background="#A6000000">
+                        <TextBlock Text="{Binding Title}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" 
+                               Style="{StaticResource TitleTextBlockStyle}" Margin="12,0,0,0" TextWrapping="NoWrap" FontFamily="DengXian" />
+                        <TextBlock Text="{Binding Score}" Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}" 
+                               Style="{StaticResource TitleTextBlockStyle}" Margin="12,12,0,0" FontFamily="DengXian" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <!-- Grid-appropriate item template as seen in section 2 -->
+            <DataTemplate x:Key="Standard200x180TileItemTemplate">
+                <Grid Width="180">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Margin="0,0,0,12" Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="173" Width="173" Grid.Row="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="173" Width="173"/>
+                    </Border>
+                    <TextBlock Text="{Binding Title}" Style="{ThemeResource BaseTextBlockStyle}" Typography.Capitals="SmallCaps" Grid.Row="1" Margin="0,0,0,24" IsTextScaleFactorEnabled="False" FontFamily="DengXian" Foreground="#FF009EA1" />
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StandardTripleLineItemTemplate">
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="99" Width="99" Grid.Column="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="99" Width="99"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" FontFamily="DengXian" />
+                        <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemSubheaderTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                        <TextBlock Text="{Binding Description}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="StandardDoubleLineItemTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" Height="99" Width="99" Grid.Column="0" HorizontalAlignment="Left">
+                        <Image Source="{Binding ImagePath}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}" Height="99" Width="99"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                        <TextBlock Text="{Binding Title}" Style="{ThemeResource ListViewItemTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                        <TextBlock Text="{Binding Subtitle}" Style="{ThemeResource ListViewItemContentTextBlockStyle}" FontFamily="DengXian" Foreground="White" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="LayoutRoot" DataContext="{Binding Group}" >
+        <Hub x:Name="Hub" Background="{ThemeResource HubBackgroundImageBrush}" >
+            <Hub.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Assets/Windmill-03-80PX-logo.png" Width="60" Height="60" Stretch="UniformToFill" />
+                    <TextBlock x:Name="pageTitle" Text="{Binding Title}" Margin="12,0,0,0"  Style="{StaticResource HeaderTextBlockStyle}" Foreground="White"
+                        VerticalAlignment="Center" IsHitTestVisible="false" TextWrapping="NoWrap" FontFamily="DengXian" />
+                </StackPanel>
+            </Hub.Header>
+
+            <HubSection Width="400"  FontFamily="DengXian" Foreground="White">
+                <HubSection.Background>
+                    <ImageBrush ImageSource="{Binding ImagePath}" Stretch="UniformToFill"  Opacity="0.8" />
+                </HubSection.Background>
+                <DataTemplate>
+                    <!--<Button Canvas.ZIndex="2" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Visibility="Visible"
+                                    Click="Button_Click_Play" CommandParameter="{Binding PlayUrl}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="Assets/Media-Play-02.png" />
+                        </Button.Background>
+                    </Button>-->
+                    <common:ImageButton Canvas.ZIndex="2" Width="200" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Visibility="Visible"
+                                    Click="Button_Click_Play" CommandParameter="{Binding PlayUrl}" NormalImage="Assets/Media-Play-02.png" HoverImage="Assets/Media-Play-02_Green.png">
+                    </common:ImageButton>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection FontFamily="DengXian" Foreground="White">
+                <DataTemplate>
+                    <ScrollViewer>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Margin="12,0,0,0" x:Uid="Actor" Style="{StaticResource BodyTextBlockStyle}" Foreground="#FF009EA1" FontFamily="DengXian" />
+                            <TextBlock Margin="12,12,0,0" Text="{Binding Actor}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" FontFamily="DengXian" />
+                            <TextBlock Margin="12,12,0,0" x:Uid="Director" Style="{StaticResource BodyTextBlockStyle}" Foreground="#FF009EA1" FontFamily="DengXian" />
+                            <TextBlock Margin="12,12,0,0" Text="{Binding Director}" Style="{StaticResource BodyTextBlockStyle}"  TextWrapping="Wrap" FontFamily="DengXian" />
+                            <TextBlock Margin="12,12,0,0" x:Uid="Description" Style="{StaticResource BodyTextBlockStyle}" Foreground="#FF009EA1" FontFamily="DengXian" />
+                            <TextBlock Margin="12,12,0,0" Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" MaxHeight="450" FontFamily="DengXian" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DataTemplate>
+            </HubSection>
+
+            <HubSection FontFamily="DengXian" Foreground="White">
+                <DataTemplate>
+                    <!--<ListView 
+                        AutomationProperties.AutomationId="ItemListViewSection3"
+                        AutomationProperties.Name="Items In Group"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemsSource="{Binding Items}"
+                        ItemTemplate="{StaticResource StandardTripleLineItemTemplate}"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+                    </ListView>-->
+                    <local:PhoneVariableSizedGridView
+                        AutomationProperties.AutomationId="ItemListViewSection3"
+                        AutomationProperties.Name="Items In Group"
+                        SelectionMode="None"
+                        IsItemClickEnabled="True"
+                        ItemsSource="{Binding Items}"
+                        ItemTemplate="{StaticResource VideoItemTemplate}"
+                        ItemClick="ItemView_ItemClick"
+                        ContinuumNavigationTransitionInfo.ExitElementContainer="True">
+
+                        <local:PhoneVariableSizedGridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid ItemWidth="150" ItemHeight="200" Orientation="Horizontal" MaximumRowsOrColumns="2"/>
+                            </ItemsPanelTemplate>
+                        </local:PhoneVariableSizedGridView.ItemsPanel>
+                    </local:PhoneVariableSizedGridView>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+    </Grid>
+</Page>

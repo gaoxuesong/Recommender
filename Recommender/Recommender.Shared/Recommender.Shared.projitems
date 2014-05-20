@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="SharedProjectFile_SccProperties">
+    <SharedProjectFile_ProjectGuid>{13609a73-68ff-4414-b856-fab504592d4c}</SharedProjectFile_ProjectGuid>
+    <SharedProjectFile_SccProjectName>SAK</SharedProjectFile_SccProjectName>
+    <SharedProjectFile_SccAuxPath>SAK</SharedProjectFile_SccAuxPath>
+    <SharedProjectFile_SccLocalPath>SAK</SharedProjectFile_SccLocalPath>
+    <SharedProjectFile_SccProvider>SAK</SharedProjectFile_SccProvider>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>67f16cfb-d1d0-4ea2-a2de-13f6064f83aa</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Recommender</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Helpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\HttpJsonContent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\PlugInFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ImageButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SlowInputStream.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReDataGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReDataItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReDetailDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\RePopularDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReSearchDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReTopicsDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\ReUserActionDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DataModel\SampleDataSource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Employee.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GeneratorIncrementalLoadingClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IncrementalLoadingBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PhoneVariableSizedGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PostersVariableSizedGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TopicsVaribaleSizedGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VariableSizedGridView.cs" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\414X180.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\414X468.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\558X756.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\846X468.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Agreement-01.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Award-01.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\background-black_1920X1080PX.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\bg-black-1920X1200PX.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Category-336PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Category-691X336PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\eva-re-300X145PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\eva-re-691X336PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\eva-re.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\eva-recommender.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Gear.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Media-Play-02.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Media-Play-02_Green.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Military-Medal.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Movie_300PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\PosterBackground01.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\PosterBackground02.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\PosterBackground03.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Search-Find_336PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\signet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\View-Reset-336PX.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-eva.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-re.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-re.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-recommender.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-search-L_691X336.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-search.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\walle-search_691X336.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-02-500PX-logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03-500PX-logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03-500PX-Square.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03-80PX-logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_128X128.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_24X24.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_30X30.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_33X33.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_43X43.scale-140.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_43X43.scale-180.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill-03_70X70.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Windmill_logo_620X300.png" />
+    <Content Include="$(MSBuildThisFileDirectory)DataModel\SampleData.json" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\LightGray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\MediumGray.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\DarkGray.png" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\zh-CN\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
